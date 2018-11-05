@@ -1,3 +1,6 @@
+*.bak
+font-awesome
+slimScroll
 # Logs
 logs
 *.log

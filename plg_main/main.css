@@ -1,0 +1,73 @@
+﻿	/*ocultando el encabezado y columna de menu*/
+	/*#ewHeaderRow,#ewMenuColumn,.ewToolbar{display:none}
+	.ewContentColumn{padding:0px}
+	.ewSiteTitle{display:none}*/
+html{
+	overflow-x: auto;
+}
+body{
+	padding-left: 0px !important;
+	background-image: url("images/top_bar.jpg"); background-position: 50% 0px; background-repeat: repeat-x;	
+	overflow-x: auto;
+}
+.ewContentColumn {background:transparent}
+.ewFooterRow {
+  background-color: transparent;
+  color: #FFF;
+  text-align: center;
+  width: 97%;
+}
+section.content, .pivot-item{padding:0px !important; overflow: auto;}
+.pivot-item{padding:0px !important; overflow:hidden}
+/**************************************
+	Barra superior
+**************************************/
+.headers .header{cursor: pointer; margin-right:7px}
+
+/**************************************
+	Barra de menu izquierda
+**************************************/
+
+/* #leftmenu .ui-state-hover{ background-color:black; background-image:none}
+#leftmenu{
+	min-height:500px;
+	min-width: 90px;
+	z-index:2;
+	text-align:center;
+	position:fixed;
+	left:0;top:0px;height:100%;background-color: #004B8B;
+	border-radius:1px;
+}
+	@media only screen and (min-height: 0px) {
+	  #leftmenu { position:absolute}
+	}
+	@media only screen and (min-height: 500px) {
+	  #leftmenu { position:fixed}
+	} */
+ 
+
+/**************************************
+	 Motor de busqueda estilo Google
+**************************************/
+	/* @media only screen and (min-width: 0px) {
+	  #formulario-buscar { position:inherit}
+	}
+	@media only screen and (min-width: 700px) {
+	  #formulario-buscar { position:absolute}
+	}
+
+		.goHome,.l_ddbc{background:#000 !important; padding:5px !important; color:white; font-size:18px;} */
+/**************************************
+AdminLTE
+**************************************/
+/* hide logo */
+.skin-green .wrapper, .content-wrapper{background: transparent}
+.logo,.content-header{ display: none !important;}
+.main-header .navbar{margin-left: inherit;}
+.sidebar-menu li{
+	white-space: normal;
+}
+/*************************************
+Correcciones de barra de scrooll en iframe
+**************************************/
+.wrapper.ew-layout{ overflow: auto hidden;}
