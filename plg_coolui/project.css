@@ -1,5 +1,5 @@
 @media (max-width: 600px) {
-		.modal-body{ padding:0px}
+		/* .modal-body{ padding:0px} */
 	.form-horizontal .form-group {
     margin-left: 7px; 
     margin-right: initial; 
@@ -11,18 +11,18 @@
     padding-left: 0px;
     padding-right: 15px;
 	}
-	.modal-dialog{
+	/* .modal-dialog{
 		margin-right : 0px;
-	}
+	} */
 
 }
 @media (min-width: 768px){
-  .ewForm.ewSearchForm {
+  .ew-form.ew-search-form {
     width: inherit !important;
   }
-	#ewModalDialog .modal-dialog {
+	/* #ew-modal-dialog .modal-dialog {
     width: 85%;
-  }
+  } */
   input[type="text"]:not([size]):not([name="pageno"]):not(.cke_dialog_ui_input_text), input[type="password"]:not([size]) {
     min-width: inherit;
     width : 95%;
@@ -34,7 +34,7 @@
 }
 
 @media only screen and (max-width: 700px) {
-  .modal { left:initial;margin-left:4%; max-width:90%; top:40px;height:80%;overflow:auto;min-height:505px}
+  /* .modal { left:initial;margin-left:4%; max-width:90%; top:40px;height:80%;overflow:auto;min-height:505px} */
  }
 
 
@@ -43,22 +43,22 @@ body{
   padding-left:10px;
 }
 .hide-empty{display:none}
-.ewAddEdit.ewAdd,
-.ewGridLink.ewInlineUpdate,
-.ewAddEdit.ewGridAdd,
-.ewAction.ewGridSave,
-.ewAction.ewGridInsert,
-.ewDetailAdd, /*Personalizando botones de opciones*/
-.ewAddOptBtn,
-.ewItemList,
-.btn-primary,.ewShowAll {
+.ew-add-edit.ew-add,
+.ew-grid-link.ew-inline-update,
+.ew-add-edit.ew-grid-add,
+.ew-action.ew-grid-save,
+.ew-action.ew-grid-insert,
+.ew-detail-add, /*Personalizando botones de opciones*/
+.ew-add-opt-btn,
+.ew-item-list,
+.btn-primary,.ew-show-all {
 	visibility:hidden;
 	opacity:0;
   transition:opacity 0.5s linear;
 }
 
 /*checkbox y radio */
-.ewItemTable td {
+.ew-item-table td {
 	padding-right: 3px;
 }
 .radio-inline, .checkbox-inline {
@@ -87,7 +87,7 @@ body{
 
 label {white-space:inherit !important}
 
-.ewItemList.yes-no {overflow:hidden;height:0px;width:0px;display:inline-block}
+.ew-item-list.yes-no {overflow:hidden;height:0px;width:0px;display:inline-block}
 /* checkbox estilo iOS7 */
 input.iOS7 {
   display: inline-block;
@@ -227,7 +227,7 @@ input.iOS7:active {
 }
 
 /*jqueryfileupload */
-.ewUploadTable{
+.ew-upload-table{
 	margin-top : 0px !important;
 	min-height:150px;
 	min-width:150px;
@@ -274,9 +274,10 @@ overflow: hidden;
 }
 
 .template-download .delete:before {
-    content: "\e020";
-    font-family: 'Glyphicons Halflings';
+    content: "\f1f8";
+    font-family: 'FontAwesome';
     color:red;
+    font-size: 20px;
 }
 .template-download .delete{
 	background-image:inherit;
@@ -359,7 +360,7 @@ overflow: hidden;
 } */
 
 /* tooltip link */
-.ewTooltipLink{
+.ew-tooltip-link{
   border-bottom: 1px dashed;
   color: inherit;
   cursor: default;

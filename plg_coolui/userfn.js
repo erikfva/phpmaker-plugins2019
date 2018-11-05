@@ -3,7 +3,7 @@ function coolRadioCheckBtn(container ){
 
 	if (typeof container == 'undefined') var container = $('body');
 
-	var itemlist = container.find('.ewItemList').addClass('btn-group').attr('data-toggle','buttons');
+	var itemlist = container.find('.ew-item-list').addClass('btn-group').attr('data-toggle','buttons');
 
 		itemlist.each(function(){
 			var item = $(this);
@@ -50,19 +50,19 @@ function coolTemplate(container){
 //Personalizando botones de opciones
 
 //container.find('.ewRowLink.ewEdit,.ewAddEdit.ewGridEdit,.ewAction.ewMultiUpdate,.ewAction.ewEdit').removeClass('btn-default').addClass('btn-info');
-container.find('.ewGridLink.ewGridDelete, .ewRowLink.ewDelete, .ewAction.ewMultiDelete, .ewGridLink.ewInlineCancel, .ewAction.ewGridCancel').removeClass('btn-default').addClass('text-danger');
-container.find('.ewAddOptBtn').removeClass('btn-default').addClass('btn-primary');
-container.find('.ewShowAll').removeClass('btn-default').addClass('btn-warning').css({'visibility':'inherit','opacity':'1'});
-container.find('.ewExportLink.ewPrint').attr('target','_blank');
+container.find('.ew-grid-link.ew-grid-delete, .ew-row-link.ew-delete, .ew-action.ew-multi-delete, .ew-grid-link.ew-inline-cancel, .ew-action.ew-grid-cancel').removeClass('btn-default').addClass('text-danger');
+container.find('.ew-add-opt-btn').removeClass('btn-default').addClass('btn-primary');
+container.find('.ew-show-all').removeClass('btn-default').addClass('btn-warning').css({'visibility':'inherit','opacity':'1'});
+container.find('.ew-export-link.ew-print').attr('target','_blank');
 
 	if(typeof $.fn.tableHeadFixer === 'function' ){ //If table-fixed-header load?
-   	container.find('.ewTable').not('.hidden, .ewMasterTable').find('thead').addClass('well').end().tableHeadFixer()
+   	container.find('.ew-table').not('.hidden, .ew-master-table').find('thead').addClass('well').end().tableHeadFixer()
  	}
 
 coolRadioCheckBtn(container);
 
 //Mostrando botones personalizados
-container.find('.ewAddOptBtn, .btn-primary,.ewAddEdit.ewAdd, .ewGridLink.ewInlineUpdate, .ewAddEdit.ewGridAdd, .ewAction.ewGridSave,.ewAction.ewGridInsert, .ewDetailAdd')
+container.find('.ew-add-opt-btn, .btn-primary,.ew-add-edit.ew-add, .ew-grid-link.ew-inline-update, .ew-add-edit.ew-grid-add, .ew-action.ew-grid-save,.ew-action.ew-grid-insert, .ew-detail-add')
 //.removeClass('btn-default').addClass('goobutton')
 .css({'visibility':'inherit','opacity':'1'});
 
@@ -89,7 +89,7 @@ function addOpt(o){
 		for(var i = 0; i < parseInt(ewItemList.data('repeatcolumn')); i++ ){
 			tr.append('<td></td>');
 		}
-		ewItemList.find('.ewItemTable').append(tr);
+		ewItemList.find('.ew-item-table').append(tr);
 		td = ewItemList.find('td:empty').first();
 	}
 	td.append(newLabel);
@@ -99,7 +99,7 @@ function addOpt(o){
 
 function ModalDialogShow(o) {
 
-    var $dlg = $("#ewModalDialog");
+    var $dlg = $("#ew-modal-dialog");
 	var frm,form;
 	
 	if(!$dlg.length) return;
@@ -148,5 +148,5 @@ function ModalDialogShow(o) {
 		$dlg.find(".modal-footer .btn-primary").off('click').click(_submit).focus();
 	}); // div#ewModalDialog always exists
 	
-	ew_ModalDialogShow(o);
+	modalDialogShow(o);
 }
