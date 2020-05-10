@@ -43,7 +43,7 @@ use PHPMaker2020\contab as phpfn;
 
 In this sample the namespace is **contab**.
 
-### 3.- Configure your proyect:
+### 3.- Configure your project:
 
 --> Add to the beginning of **Server Events/Global/All Pages/Global Code**
 
