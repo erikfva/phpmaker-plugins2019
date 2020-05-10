@@ -1,38 +1,91 @@
 # phpmaker-plugins
 
-### Instalando
-- 1.- Crear una carpeta llamada "plugins" en la carpeta de su proyecto PHPMaker.
-- 2.- Copie el contenido del repositorio en la carpeta "plugins".
-- 3.- Realizar los siguientes ajustes a su proyecto PHPMaker:
+Non-intrusive add-on for PHPMaker.
 
---> Adicionar al inicio de Server Events/Global/All Pages/Global Code
+## Requirements
+
+#### PHPMaker 2020.0.14 o superior.
+
+## Installation
+
+### 1. Clone or copy repository into PHPMaker project folder.
+
+Open console and goto inside PHPMaker project folder, then run command:
+
+```Git
+git clone https://github.com/erikfva/phpmaker-plugins2019.git phpmaker-plugins
+```
+
+### 2. Configure plugin.
+
+Edit **phpmaker-plugins/phpfn.php** file and configure your main project namespace. You can find this information in the begining of your **phpfn.php** file into main project folder.
+
+#### <Project folder>/phpfn.php
+
+```PHP
+<?php
+
+/**
+ * PHPMaker Common classes and functions
+ * (C) 2002-2019 e.World Technology Limited. All rights reserved.
+*/
+namespace PHPMaker2020\contab;
+```
+
+#### phpmaker-plugins/phpfn.php
+
+```PHP
+<?php
+/** CONFIG YOUR MAIN PROJECT NAMESPACE HERE!!! **/
+use PHPMaker2020\contab as phpfn;
+/* **************************************** */
+```
+
+In this sample the namespace is **contab**.
+
+### 3.- Configure your proyect:
+
+--> Add to the beginning of **Server Events/Global/All Pages/Global Code**
+
 ```sh
 	include_once "plugins/plgmngr.php";
 ```
---> Adicionar al inicio de Server Events/Global/All Pages/Page_Head
+
+--> Add to the beginning of **Server Events/Global/All Pages/Page_Head**
+
 ```sh
 //incluyendo los encabezados de los "plugins"
 	includePlg(); //sin parametros asume que la seccion es "header"
 ```
---> Adicionar al cuerpo de la funcion de Server Events/Global/All Pages/Page_Loading
+
+--> Add to beginning of **Server Events/Global/All Pages/Page_Loading**
+
 ```sh
 	includePlg("loading");
 ```
---> Adicionar al cuerpo de la funcion de Server Events/Global/All Pages/Page_Rendering
+
+--> Add to function body of **Server Events/Global/All Pages/Page_Rendering**
+
 ```sh
 	includePlg("rendering");
 ```
---> Adicionar al cuerpo de la funcion de Server Events/Global/All Pages/Page_Unloaded
+
+--> Add to function body of **Server Events/Global/All Pages/Page_Unloaded**
+
 ```sh
 	includePlg("unloaded");
 ```
---> Adicionar al inicio de Client Scripts/Global/Pages with header|footer/Client Script
+
+--> Add to beginning of **Client Scripts/Global/Pages with header|footer/Client Script**
+
 ```sh
-<?php    
+<?php
 	includePlg("client_script");
 ?>
 ```
---> Adicionar al inicio de Client Scripts/Global/Pages with header|footer/StartUp Script
+
+--> Add to beginning of **Client Scripts/Global/Pages with header|footer/StartUp Script**
+
 ```sh
 </script>
 <?php
@@ -40,9 +93,14 @@
 ?>
 <script type="text/javascript" >
 ```
-### Uso
---> Para agregar el plugin "autosizetextarea" por ejemplo en la pagina Edit,
-	adicionar en la funcion de Server Events/Table-Specific/Edit Page/Page_Load
+
+### Use
+
+#### Sample
+
+--> To enable "autosizetextarea" plugin for any **_Edit Page_**,
+add to beginning of **Server Events/Table-Specific/Edit Page/Page_Load** section of page
+
 ```sh
 	addPlg("plg_autosizetextarea");
 ```

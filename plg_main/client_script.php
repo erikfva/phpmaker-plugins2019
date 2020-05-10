@@ -1,19 +1,15 @@
+
 <?php
-	include_once "plugins/phpfn.php";
-	global $_SESSION;
+global $plgConf;
 
-	$PageName = basename(CurrentPageName(), ".php");
-	if(!empty($_SESSION[$PageName."_run_script"])){
-		echo $_SESSION[$PageName."_run_script"];
-		$_SESSION[$PageName."_run_script"] = "";
-	}
-	global $SkipHeaderFooter;
+include_once $plgConf["plugins_path"] . "phpfn.php";
+global $_SESSION;
 
-	if(@$SkipHeaderFooter && CurrentPage()->TableName != "main.php"){
-	//if( CurrentPage()->TableName != "main.php"){
-		echo "</script>";
-			$bc = Breadcrumb();
-			if($bc) $bc->Render();
-		echo "<script>";
-	}
+$PageName = basename(CurrentPageName(), ".php");
+if (!empty($_SESSION[$PageName . "_run_script"])) {
+    echo $_SESSION[$PageName . "_run_script"];
+    $_SESSION[$PageName . "_run_script"] = "";
+}
 ?>
+    //plg_main: client_script.php
+    //Write javascript for <head> section.
