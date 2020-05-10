@@ -12,7 +12,7 @@ if (@$GLOBALS["_SERVER"]["REQUEST_METHOD"] == "OPTIONS") {
 //verificando webservice.
 if (chkopt("webservice")) {
 
-    if (!IsLoggedIn()) {
+    if (!IsLoggedIn() && CurrentPageID() != 'logout') {
         global $Language;
         CurrentPage()->setFailureMessage($Language->Phrase("InvalidUidPwd"));
     }
@@ -35,7 +35,10 @@ if (chkopt("webservice")) {
     }
 
     if ($success) { //prepare json result
-
+        if (CurrentPageID() == 'logout') {
+            setWSR("success", 1);
+            setWSR("msg", "Bye, bye.");
+        }
         if (CurrentPageID() == 'login') {
             $user = isset($_GET["username"]) ? $_GET["username"] : (isset($_POST["username"]) ? $_POST["username"] : '');
             if (EW_ADMIN_USER_NAME != $user) {

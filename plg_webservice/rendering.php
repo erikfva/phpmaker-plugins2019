@@ -13,3 +13,11 @@ CurrentPage()->terminate();
 }
 }
  */
+if (chkopt("webservice")) {
+    $msg = CurrentPage()->getFailureMessage();
+    if ($msg != "") {
+        CurrentPage()->ClearFailureMessage();
+        setWSR("success", 0);
+        setWSR("msg", $msg);
+    }
+}

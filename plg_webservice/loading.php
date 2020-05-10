@@ -20,11 +20,12 @@ if (chkopt("webservice")) {
         case 'login':
             CurrentPage()->CreateToken();
             $_POST[Config("TOKEN_NAME")] = CurrentPage()->Token;
-            var_dump(CurrentPage()->Token);
+
             break;
         case "add":
             $_POST["t"] = CurrentPage()->TableName;
-            $_POST["a_add"] = "A";
+            $_POST["action"] = "insert";
+            $_POST["modal"] = 0;
             CurrentPage()->CreateToken();
             $_POST[Config("TOKEN_NAME")] = CurrentPage()->Token;
 
