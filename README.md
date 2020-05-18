@@ -4,7 +4,7 @@ Non-intrusive add-on for PHPMaker.
 
 ## Requirements
 
-#### PHPMaker 2020.0.14 o superior.
+#### PHPMaker 2020.0.14 or superior.
 
 ## Installation
 
@@ -18,7 +18,7 @@ git clone https://github.com/erikfva/phpmaker-plugins2019.git phpmaker-plugins
 
 ### 2. Configure plugin.
 
-Edit **phpmaker-plugins/phpfn.php** file and configure your main project namespace. You can find this information in the begining of your **phpfn.php** file into main project folder.
+Edit **phpmaker-plugins/phpfn.php** file and configure your main project namespace. You can find this information in the beginning of your **phpfn.php** file into main project folder.
 
 #### <Project folder>/phpfn.php
 

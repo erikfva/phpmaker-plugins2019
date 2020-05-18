@@ -16,6 +16,7 @@ if (file_exists($plgConf["plugins_path"] . "phpfn.php")) {
 if (chkopt("webservice")) {
 
     global $Language;
+    $sessionid = @$_POST["session_key"] . @$_GET["session_key"];
 
     // Language object
     if (!isset($Language)) {
@@ -27,9 +28,8 @@ if (chkopt("webservice")) {
         exit();
     }
 
-    if (CurrentPage() != "login.php" && !chkopt("login") && !IsLoggedIn() && (@$_SESSION[EW_PROJECT_NAME . "_Username"] == "")) { //validando opciones de autologin
+    if (CurrentPageName() != "login.php" && !chkopt("login") && !IsLoggedIn() && (@$_SESSION[EW_PROJECT_NAME . "_Username"] == "")) { //validando opciones de autologin
         //autologin con parámetro 'session_key'
-        $sessionid = @$_POST["session_key"] . @$_GET["session_key"];
 
         if ($sessionid) {
             if (session_id() != "") {

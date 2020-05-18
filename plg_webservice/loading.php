@@ -7,6 +7,13 @@ if (empty(CurrentPage()->PageObjName)) {
 
 if (chkopt("webservice")) {
 
+    $sessionid = @$_POST["session_key"] . @$_GET["session_key"];
+
+    if (empty($sessionid) && CurrentPageName() != "login.php") {
+        echo '{success:0,msg:"' . DeniedMessage() . '"}';
+        exit;
+    }
+
     //Iniciando buffer Web Service Response WSR
     if (!empty($_SESSION[CurrentPage()->PageObjName . "_WSR"])) {
         unset($_SESSION[CurrentPage()->PageObjName . "_WSR"]); // = [];
