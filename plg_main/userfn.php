@@ -37,4 +37,25 @@ if (empty($cmdx)) {
     $cmdx = [];
 }
 
+//--------------------------------------------------//
+//*** Include .css an .js on independent page, just
+// put into Page_Load -> StyleSheet(<your file url>);
+// or ClientScript(<your file url>);
+//-------------------------------------------------//
+function StyleSheet($url)
+{
+    global $__cssUrl;
+    $__cssUrl[] = $url;
+}
+function ClientScript($url)
+{
+    global $__scriptUrl;
+    $__scriptUrl[] = $url;
+}
+function css($newcss)
+{
+    global $__css;
+    $__css = empty($__css) ? $newcss : $__css . $newcss;
+}
+
 //echo "plg_main: userfn.php\n";

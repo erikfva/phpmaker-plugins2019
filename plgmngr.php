@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 global $plgConf;
 $plgConf = array(
     "plugins_path" => "phpmaker-plugins/",
@@ -13,9 +13,11 @@ $plgConf = array(
     "plg_selectcol" => array("loading" => "plg_selectcol/loading.php",
         "client_script" => "plg_selectcol/client_script.php"),
     "plg_metro" => array("header" => "plg_main/header_metro.php"),
+/*
     "plg_coolui" => array("userfn" => "plg_coolui/userfn.php",
         "header" => "plg_coolui/header.php",
         "footer" => "plg_coolui/footer.php"),
+*/
     "plg_uidatetime" => array("header" => "plg_uidatetime/header.php",
         "footer" => "plg_uidatetime/footer.php"),
     "plg_autosizetextarea" => array("header" => "plg_autosizetextarea/header.php",

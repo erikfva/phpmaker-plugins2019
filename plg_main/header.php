@@ -44,6 +44,33 @@ if (isset($Breadcrumb->Links)) {
 }
 ?>
 
+<?php
+global $__cssUrl;
+global $__scriptUrl;
+if (isset($__cssUrl)) {
+    foreach ($__cssUrl as $url) {
+        echo '<link rel="stylesheet" type="text/css" href="' . $url . '">' . "\n";
+        //AddStylesheet($url);
+    }
+}
+
+if (isset($__scriptUrl)) {
+    foreach ($__scriptUrl as $url) {
+        //AddClientScript($url);
+        echo '<script src="' . $url . '"></script>' . "\n";
+    }
+}
+global $__css;
+if (isset($__css)) {
+    echo "
+		<style type=\"text/css\">
+		" . $__css . "
+		</style>
+		";
+}
+
+?>
+
 <?php AddStylesheet($plgConf["plugins_path"] . "plg_main/loading/css/loading.css");?>
 <?php AddClientScript($plgConf["plugins_path"] . "plg_main/userfn.js");?>
 
