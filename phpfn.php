@@ -2,7 +2,7 @@
 
 use PHPMaker2020\e_technology as phpfn;
 
-define("EW_PROJECT_NAME", phpfn\PROJECT_NAME, true); // Project name
+define("EW_PROJECT_NAME", phpfn\PROJECT_NAME); // Project name
 //define("EW_TABLE_MASTER_TABLE", Config("TABLE_MASTER_TABLE"), true); // Master table
 
 class Language extends phpfn\Language
