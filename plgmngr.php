@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 global $plgConf;
 $plgConf = array(
     "plugins_path" => "phpmaker-plugins/",
