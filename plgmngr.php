@@ -1,7 +1,8 @@
 <?php
 global $plgConf;
+$plugins_path = $RELATIVE_PATH . "phpmaker-plugins/";
 $plgConf = array(
-    "plugins_path" => "phpmaker-plugins/",
+    "plugins_path" => $plugins_path,
     "include" => array(),
     "plg_main" => array(
         "userfn" => "plg_main/userfn.php",

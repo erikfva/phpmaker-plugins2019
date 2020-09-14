@@ -1,6 +1,6 @@
 <?php
 
-use PHPMaker2020\e_technology as phpfn;
+use PHPMaker2020\Medical as phpfn;
 
 define("EW_PROJECT_NAME", phpfn\PROJECT_NAME); // Project name
 //define("EW_TABLE_MASTER_TABLE", Config("TABLE_MASTER_TABLE"), true); // Master table
@@ -74,4 +74,25 @@ function IsMobile()
 function CurrentPageID()
 {
     return phpfn\CurrentPageID();
+}
+function IsPost()
+{
+    return phpfn\IsPost();
+}
+function IsGet()
+{
+    return phpfn\IsGet();
+}
+
+function Get($name, $default = null)
+{
+    return phpfn\Get($name, $default);
+}
+function Post($name, $default = null)
+{
+    return phpfn\Post($name, $default);
+}
+function DomainUrl()
+{
+    return phpfn\DomainUrl();
 }

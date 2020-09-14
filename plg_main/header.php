@@ -2,11 +2,16 @@
 include_once $plgConf["plugins_path"] . "phpfn.php";
 
 global $plgConf, $cmdx;
+global $__css;
 
 //Para mostrar solo la tabla de datos sin encabezado y pie de pagina
 global $SkipHeaderFooter;
 if (!empty($cmdx) && in_array("SkipHeaderFooter", $cmdx)) {
     $SkipHeaderFooter = true;
+}
+
+if (Get("hidemasterheader") || Post("hidemasterheader")) {
+    css("\n.ew-master-div{display:none}"); //change page links in loading.php
 }
 
 global $Breadcrumb, $Language;
@@ -35,7 +40,7 @@ if (isset($Breadcrumb->Links)) {
         array_splice($Breadcrumb->Links, count($Breadcrumb->Links) - 1, 0, array(array(
             $masterTbl,
             $masterTbl,
-            ew_DomainUrl() . $PageLnk,
+            DomainUrl() . $PageLnk,
             "",
             $masterTbl,
             false)));
@@ -60,7 +65,7 @@ if (isset($__scriptUrl)) {
         echo '<script src="' . $url . '"></script>' . "\n";
     }
 }
-global $__css;
+
 if (isset($__css)) {
     echo "
 		<style type=\"text/css\">
@@ -71,8 +76,8 @@ if (isset($__css)) {
 
 ?>
 
-<?php AddStylesheet($plgConf["plugins_path"] . "plg_main/loading/css/loading.css");?>
-<?php AddClientScript($plgConf["plugins_path"] . "plg_main/userfn.js");?>
+<?php echo '<link rel="stylesheet" type="text/css" href="' . $plgConf["plugins_path"] . "plg_main/loading/css/loading.css" . '">' . "\n"; ?>
+<?php echo '<script src="' . $plgConf["plugins_path"] . "plg_main/userfn.js" . '"></script>' . "\n"; ?>
 
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no' name='viewport' />
 <!-- Loading spinner... -->

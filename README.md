@@ -48,7 +48,7 @@ In this sample the namespace is **contab**.
 --> Add to the beginning of **Server Events/Global/All Pages/Global Code**
 
 ```sh
-	include_once "plugins/plgmngr.php";
+	include_once "phpmaker-plugins/plgmngr.php";
 ```
 
 --> Add to the beginning of **Server Events/Global/All Pages/Page_Head**
@@ -87,11 +87,9 @@ In this sample the namespace is **contab**.
 --> Add to beginning of **Client Scripts/Global/Pages with header|footer/StartUp Script**
 
 ```sh
-</script>
 <?php
 	includePlg("footer");
 ?>
-<script type="text/javascript" >
 ```
 
 ### Use

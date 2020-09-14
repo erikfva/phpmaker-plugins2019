@@ -10,7 +10,9 @@ if (chkopt("webservice")) {
     $sessionid = @$_POST["session_key"] . @$_GET["session_key"];
 
     if (empty($sessionid) && CurrentPageName() != "login.php") {
-        echo '{success:0,msg:"' . DeniedMessage() . '"}';
+        header('Access-Control-Allow-Origin: *'); //Permitir cross-domain
+        header("Content-Type: application/json");
+        echo '{"success":"0","msg":"' . DeniedMessage() . '"}';
         exit;
     }
 

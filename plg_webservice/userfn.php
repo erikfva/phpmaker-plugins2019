@@ -31,6 +31,9 @@ if (!empty($sessionid)) {
 function chkopt($op)
 {
     global $cmdx;
+    if (strpos($op, "webservice") !== false) {
+        return strpos(Get("cmdx"), "webservice") !== false || strpos(Post("cmdx"), "webservice") !== false;
+    }
     return (!empty($cmdx) && in_array($op, $cmdx));
 }
 
@@ -55,14 +58,17 @@ function toJSON($page)
     $FieldList = array();
     $orderField = "";
     $orderBy = $page->getSessionOrderBy();
+
     $orderType = strpos($orderBy, "ASC") !== false ? "ASC" : "DESC";
     foreach ($page->fields as $FldVar => $field) {
         $FieldList[] = array('id' => $field->FieldVar, 'name' => $FldVar,
             'caption' => $field->caption(),
             'sortable' => ($page->SortUrl($field) == "" ? false : true),
             'visible' => $field->Visible);
-        $orderField = strpos($orderBy, $FldVar) !== false ? $FldVar : $orderField;
+        $orderField = strpos(" " . $orderBy, " " . $FldVar . " ") !== false || strpos($orderBy, "`" . $FldVar . "` ") !== false ? $FldVar : $orderField;
     }
+
+    //var_dump($orderBy, $orderField);exit();
 
     //** Get Security Info */
     global $Security;

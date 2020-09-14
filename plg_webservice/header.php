@@ -39,12 +39,15 @@ if (chkopt("webservice")) {
             session_id($sessionid);
             session_start();
             header('Access-Control-Allow-Origin: *'); //Permitir cross-domain
+            header("Content-Type: application/json");
+
             if (session_id() == "") {
-                echo '{success:0,msg:"' . ew_DeniedMsg() . '"}';
+                echo '{"success":"0","msg":"' . DeniedMessage() . '"}';
                 exit;
             }
         } else {
             header('Access-Control-Allow-Origin: *'); //Permitir cross-domain
+            header("Content-Type: application/json");
 
             //***verificando acceso anonimo
             global $UserProfile, $Security;
@@ -89,7 +92,7 @@ if (chkopt("webservice")) {
                     break;
             }
             if (!$authorized) {
-                echo '{success:0,msg:"' . DeniedMessage() . '"}';
+                echo '{"success":"0","msg":"' . DeniedMessage() . '"}';
                 exit;
             }
         }
