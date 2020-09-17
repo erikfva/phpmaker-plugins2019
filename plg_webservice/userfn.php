@@ -166,11 +166,10 @@ function toJSON($page)
     // Output data
     //    return json_encode($Doc->Items, 0);
 
+    //$newRecord = NewRecord($page);
+
     //get protected method, reference -> https: //stackoverflow.com/questions/20334355/how-to-get-protected-property-of-object-in-php
-    $getNewRecord = function () {
-        return $this->newRow();
-    };
-    $newRecord = $getNewRecord->call($page);
+    $Model = getModel($page);
 
     return json_encode(
         array(
@@ -183,7 +182,7 @@ function toJSON($page)
             'fieldList' => $FieldList,
             'orderField' => $orderField,
             'orderType' => $orderType,
-            'newRow' => $newRecord,
+            'Model' => $Model,
             'rows' => $Doc->GetItems(),
 
         )

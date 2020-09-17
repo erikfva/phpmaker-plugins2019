@@ -96,3 +96,20 @@ function DomainUrl()
 {
     return phpfn\DomainUrl();
 }
+//get protected method, reference -> https: //stackoverflow.com/questions/20334355/how-to-get-protected-property-of-object-in-php
+function getModel($page)
+{
+
+    $p = $page;
+    if ($page->PageID != "add") {
+        $class = phpfn\PROJECT_NAMESPACE . $page->TableName . "_add";
+        $p = new $class();
+    }
+
+    //get protected method, reference -> https: //stackoverflow.com/questions/20334355/how-to-get-protected-property-of-object-in-php
+    $getNewRecord = function () {
+        return $this->newRow();
+    };
+
+    return $getNewRecord->call($p);
+};
