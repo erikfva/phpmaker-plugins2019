@@ -18,6 +18,15 @@ if (chkopt("webservice")) {
     }
 
     $success = true;
+
+    $msg = CurrentPage()->getSuccessMessage();
+    if ($msg != "") {
+        setWSR("success", 1);
+        setWSR("msg", $msg);
+        //echo json_encode(json_decode('{"success":1,"msg":"'.$msg.'"}'));
+        CurrentPage()->ClearSuccessMessage();
+    }
+
     $msg = CurrentPage()->getFailureMessage();
     if ($msg != "") {
         $success = false;
@@ -25,13 +34,6 @@ if (chkopt("webservice")) {
         setWSR("success", 0);
         setWSR("msg", $msg);
         //echo json_encode(json_decode('{"success":0,"msg":"'.$msg.'"}'));
-    }
-    $msg = CurrentPage()->getSuccessMessage();
-    if ($msg != "") {
-        setWSR("success", 1);
-        setWSR("msg", $msg);
-        //echo json_encode(json_decode('{"success":1,"msg":"'.$msg.'"}'));
-        CurrentPage()->ClearSuccessMessage();
     }
 
     if ($success) { //prepare json result
@@ -65,6 +67,7 @@ if (chkopt("webservice")) {
         if (CurrentPageID() == "list") {
             $strJSON = toJSON(CurrentPage());
             $_SESSION[CurrentPage()->PageObjName . "_WSR"] = json_decode($strJSON, true);
+            setWSR("success", 1);
         }
     }
 

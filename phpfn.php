@@ -101,7 +101,7 @@ function getModel($page)
 {
 
     $p = $page;
-    if ($page->PageID != "add") {
+    if ($page->PageID != "add" && file_exists(getcwd() . "//classes//" . $page->TableName . "_add.php")) {
         $class = phpfn\PROJECT_NAMESPACE . $page->TableName . "_add";
         $p = new $class();
     }
@@ -113,3 +113,12 @@ function getModel($page)
 
     return $getNewRecord->call($p);
 };
+function errorFn($err)
+{
+    CurrentPage()->setFailureMessage(Conn()->errorMsg());
+}
+function Conn()
+{
+    return phpfn\Conn();
+
+}

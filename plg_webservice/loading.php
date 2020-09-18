@@ -6,7 +6,7 @@ if (empty(CurrentPage()->PageObjName)) {
 }
 
 if (chkopt("webservice")) {
-
+    
     $sessionid = @$_POST["session_key"] . @$_GET["session_key"];
 
     if (empty($sessionid) && CurrentPageName() != "login.php") {

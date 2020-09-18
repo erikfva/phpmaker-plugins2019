@@ -53,7 +53,6 @@ function setWSR($key, $value = null)
 
 function toJSON($page)
 {
-
     //** Get Fields Info */
     $FieldList = array();
     $orderField = "";
@@ -61,13 +60,13 @@ function toJSON($page)
 
     $orderType = strpos($orderBy, "ASC") !== false ? "ASC" : "DESC";
     foreach ($page->fields as $FldVar => $field) {
+        $field->ExportOriginalValue = true;
         $FieldList[] = array('id' => $field->FieldVar, 'name' => $FldVar,
             'caption' => $field->caption(),
             'sortable' => ($page->SortUrl($field) == "" ? false : true),
             'visible' => $field->Visible);
         $orderField = strpos(" " . $orderBy, " " . $FldVar . " ") !== false || strpos($orderBy, "`" . $FldVar . "` ") !== false ? $FldVar : $orderField;
     }
-
     //var_dump($orderBy, $orderField);exit();
 
     //** Get Security Info */
@@ -138,6 +137,7 @@ function toJSON($page)
     $Pager = new PrevNextPager($page->StartRecord, $page->DisplayRecords, $page->TotalRecords);
 
 //** Create Json Document */
+
     $page->Export = "Json";
     $page->ExportDoc = GetExportDocumentJson($page, "h");
     $Doc = &$page->ExportDoc;
@@ -148,25 +148,15 @@ function toJSON($page)
         $page->StopRecord = $page->DisplayRecords <= 0 ? $page->TotalRecords : $page->DisplayRecords;
     }
 
-    // Call Page Exporting server event
-    //--    $page->ExportDoc->ExportCustom = !$page->Page_Exporting();
-    //--    $ParentTable = "";
-    //--    $page->Page_DataRendering($page->PageHeader);
     $page->ExportDocument($Doc, $rs, $page->StartRecord, $page->StopRecord, "");
-    //--    $page->Page_DataRendered($page->PageFooter);
+
+    $rows = $Doc->GetItems();
+    if ($Pager->RecordCount == 1) {
+        $rows = [$rows];
+    }
 
     // Close recordset
     $rs->Close();
-    // Call Page Exported server event
-    //--    $page->Page_Exported();
-
-    // Export header and footer
-    //--    $Doc->ExportHeaderAndFooter();
-
-    // Output data
-    //    return json_encode($Doc->Items, 0);
-
-    //$newRecord = NewRecord($page);
 
     //get protected method, reference -> https: //stackoverflow.com/questions/20334355/how-to-get-protected-property-of-object-in-php
     $Model = getModel($page);
@@ -183,7 +173,7 @@ function toJSON($page)
             'orderField' => $orderField,
             'orderType' => $orderType,
             'Model' => $Model,
-            'rows' => $Doc->GetItems(),
+            'rows' => $rows,
 
         )
     );
