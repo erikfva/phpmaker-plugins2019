@@ -65,7 +65,8 @@ function toJSON($page)
             'caption' => $field->caption(),
             'sortable' => ($page->SortUrl($field) == "" ? false : true),
             'visible' => $field->Visible);
-        $orderField = strpos(" " . $orderBy, " " . $FldVar . " ") !== false || strpos($orderBy, "`" . $FldVar . "` ") !== false ? $FldVar : $orderField;
+        $orderField = strpos(" " . $orderBy, " " . $FldVar . " ") !== false || strpos($orderBy, "`" . $FldVar . "` ") !== false || strpos(" " . $orderBy, "." . $FldVar . " ") !== false || strpos(" " . $orderBy, "." . $FldVar . ",") !== false ? $FldVar : $orderField;
+
     }
     //var_dump($orderBy, $orderField);exit();
 

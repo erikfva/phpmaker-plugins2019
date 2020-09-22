@@ -37,7 +37,7 @@ if (IsPost() && !empty(Post("returnUrl"))) {
     CurrentPage()->setReturnUrl(Post("returnUrl"));
 }
 
-if (!empty($_SESSION[CurrentPage()->TableName . "_hidemasterheader"])) {
+if (!empty(CurrentPage()->TableName) && !empty($_SESSION[CurrentPage()->TableName . "_hidemasterheader"])) {
     //var_dump("hidemasterheader");exit;
     $_SESSION[CurrentPage()->TableName . "_hidemasterheader"] = null;
     $_GET["hidemasterheader"] = true;
