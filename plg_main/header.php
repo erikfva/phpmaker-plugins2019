@@ -24,13 +24,13 @@ if (isset($Breadcrumb->Links)) {
     if (isset(CurrentPage()->PageID) && (CurrentPage()->PageID == "edit" || CurrentPage()->PageID == "add")) {
         global $customstyle;
         //$PageCaption = $Language->Phrase("EditBtn");
-        array_splice($Breadcrumb->Links, count($Breadcrumb->Links) - 1, 0, array(array("editbtn", "SaveBtn", "javascript:$('#btnAction').trigger('click');\" class=\"btn btn-sm btn-primary", "", CurrentPage()->TableVar, false)));
+        array_splice($Breadcrumb->Links, count($Breadcrumb->Links) - 1, 0, array(array("editbtn", "SaveBtn", "javascript:$('#btn-action').trigger('click');\" class=\"btn btn-sm btn-primary", "", CurrentPage()->TableVar, false)));
         css(".breadcrumb .active{display:none !important}");
     }
     if (isset(CurrentPage()->PageID) && CurrentPage()->PageID == "search") {
         global $customstyle;
         //$PageCaption = $Language->Phrase("SearchBtn");
-        array_splice($Breadcrumb->Links, count($Breadcrumb->Links) - 1, 0, array(array("searchbtn", "SearchBtn", "javascript:$('#btnAction').trigger('click');\" class=\"btn btn-sm btn-primary", "", CurrentPage()->TableVar, false)));
+        array_splice($Breadcrumb->Links, count($Breadcrumb->Links) - 1, 0, array(array("searchbtn", "SearchBtn", "javascript:$('#btn-action').trigger('click');\" class=\"btn btn-sm btn-primary", "", CurrentPage()->TableVar, false)));
         css(".breadcrumb .active{display:none !important}");
     }
     //En algunos casos es necesario adicionar el link para volver atras
