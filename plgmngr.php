@@ -19,6 +19,10 @@ $plgConf = array(
 "header" => "plg_coolui/header.php",
 "footer" => "plg_coolui/footer.php"),
  */
+    "plg_tableresponsive" => array(
+        "header" => "plg_tableresponsive/header.php",
+        "footer" => "plg_tableresponsive/footer.php",
+    ),
     "plg_uidatetime" => array("header" => "plg_uidatetime/header.php",
         "footer" => "plg_uidatetime/footer.php"),
     "plg_autosizetextarea" => array("header" => "plg_autosizetextarea/header.php",
@@ -42,12 +46,17 @@ function addPlg($plgNames, $page = "")
         $page = CurrentPage()->PageObjName;
     }
 
+    $plgList = explode(",", $plgNames);
+    foreach ($plgList as &$plg) {
+        $plg = trim($plg);
+    }
+    $plgNames = implode(",", $plgList);
+
     if (empty($plgConf["include"][$page]) && $page != "all") {
-        $plgList = explode(",", $plgNames);
+
         foreach ($plgList as $plg) {
-            $plg = trim($plg);
             if (!empty($plgConf[$plg]["loading"])) {
-                //echo "incluyendo:".$plgConf[$plg]["loading"]." posicion:loading page:".$page;
+                //echo "incluyendo:".$plgConf[$plg]["loading"]." position:loading page:".$page;
                 try {
                     include_once $plgConf["plugins_path"] . $plgConf[$plg]["loading"];
                 } catch (Exception $e) {
@@ -62,7 +71,7 @@ function addPlg($plgNames, $page = "")
     //var_dump($plgConf);
 }
 
-function includePlg($posicion = "header", $page = "")
+function includePlg($position = "header", $page = "")
 {
     //echo "** includePlg **";
     global $plgConf;
@@ -73,16 +82,16 @@ function includePlg($posicion = "header", $page = "")
 
     $plgNames .= (!empty($plgNames) ? "," : "") . (!empty($plgConf["include"][$page]) ? $plgConf["include"][$page] : "");
     $plgList = explode(",", $plgNames);
-// var_dump($plgList,$posicion);
+// var_dump($plgList,$position);
     foreach ($plgList as $plg) {
-        if (!empty($plgConf[$plg]) && !empty($plgConf[$plg][$posicion])) {
-            //    echo "incluyendo:".$plgConf[$plg][$posicion]." posicion:".$posicion." page:".$page;
-            include_once $plgConf["plugins_path"] . $plgConf[$plg][$posicion];
+        if (!empty($plgConf[$plg]) && !empty($plgConf[$plg][$position])) {
+            //    echo "incluyendo:".$plgConf[$plg][$position]." position:".$position." page:".$page;
+            include_once $plgConf["plugins_path"] . $plgConf[$plg][$position];
         }
     }
 }
 
-//incluyendo las funciones de usuario de cada plugin (para todas las p�ginas)
+//incluyendo las funciones de usuario de cada plugin (para todas las paginas)
 foreach ($plgConf as $plg) {
     if (!empty($plg["userfn"])) {
         if (file_exists($plgConf["plugins_path"] . $plg["userfn"])) {
@@ -95,4 +104,4 @@ foreach ($plgConf as $plg) {
 
 //Agregando los plugins para todas las páginas
 //addPlg("plg_main,plg_coolui,plg_webservice", "all");
-addPlg("plg_main,plg_webservice", "all");
+addPlg("plg_main, plg_webservice, plg_tableresponsive", "all");
