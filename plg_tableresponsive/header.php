@@ -112,8 +112,8 @@ END;
     //var_dump($FieldList);
     ?>
 <!-- Right Navbar -->
-<script type="text/html" id="sort-field-control" class="ew-js-template"  data-name="sort-control" data-seq="10" data-method="appendTo" data-target="#fmedicamentolist">
-<div class="sort-control position-absolute-top-right">
+<script type="text/html" id="sort-field-control" class="ew-js-template"  data-name="sort-control" data-seq="10" data-method="appendTo" data-target="#gmp_<?php echo CurrentPage()->TableName; ?>">
+<div class="sort-control position-absolute-top-right" style="top: -45px">
     <div class="dropdown">
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Orden
@@ -123,7 +123,7 @@ END;
         <?php foreach ($FieldList as $field) {
         if ($field["sortable"] && $field["visible"]) {?>
 
-            <a class="dropdown-item" href="#" onclick="ew.sort(event, '<?php echo CurrentPageName() . '?order=' . $field['name'] . '&amp;ordertype=' . ($field['name'] == $orderField ? ($orderType == 'ASC' ? 'DESC' : 'ASC') : 'ASC'); ?>', 1);">
+            <a class="dropdown-item" href="#" onclick="ew.sort(event, '<?php echo CurrentPageName() . '?order=' . $field['name'] . '&amp;ordertype=' . ($field['name'] == $orderField ? ($orderType == 'ASC' ? 'DESC' : 'ASC') : 'ASC'); ?>', 1); return false;">
                 <?php echo $field["caption"] ?><?php if (strpos($orderBy, '`' . $field["name"] . '`') !== false) {echo ' <span class="sort-symbol">&nbsp;&nbsp;&nbsp;</span>';}?>
             </a>
         <?php }}?>
