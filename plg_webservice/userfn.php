@@ -51,8 +51,7 @@ function setWSR($key, $value = null)
     }
 }
 
-function toJSON($page)
-{
+function toArray($page){
     //** Get Fields Info */
     $FieldList = array();
     $orderField = "";
@@ -129,10 +128,7 @@ function toJSON($page)
     }
 
     if (!$rs) {
-        header("Content-Type:"); // Remove header
-        header("Content-Disposition:");
-        $page->ShowMessage();
-        return;
+        return FALSE;
     }
 
     $Pager = new PrevNextPager($page->StartRecord, $page->DisplayRecords, $page->TotalRecords);
@@ -162,7 +158,7 @@ function toJSON($page)
     //get protected method, reference -> https: //stackoverflow.com/questions/20334355/how-to-get-protected-property-of-object-in-php
     $Model = getModel($page);
 
-    return json_encode(
+    return 
         array(
             'psearch' => $page->BasicSearch->Keyword,
             'TableVar' => $page->TableVar,
@@ -176,7 +172,21 @@ function toJSON($page)
             'Model' => $Model,
             'rows' => $rows,
 
-        )
+        );
+    
+}
+
+function toJSON($page)
+{
+    $data = toArray($page);
+    if($data === FALSE){
+        header("Content-Type:"); // Remove header
+        header("Content-Disposition:");
+        $page->ShowMessage();
+        return;
+    }
+    return json_encode(
+        $data
     );
 
 }
